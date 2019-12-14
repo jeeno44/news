@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
 use App\Models\Post;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,Sortable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+       'role_id', 'name', 'email', 'password', 'invite'
     ];
 
     /**
@@ -50,5 +51,12 @@ class User extends Authenticatable
 
     }
 
+    public $sortable = [
+        'id',
+        'role_id',
+        'name',
+        'email',
+        'created_at',
+        'updated_at'];
 
 }

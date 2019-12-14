@@ -26,4 +26,55 @@ class Helper
         }
     }
 
+    public static function getDate($datetime)
+    {
+        return substr($datetime,0,10);
+    }
+
+    public static function isAdmin ()
+    {
+        if (Auth::check()){
+            if (Auth::user()->role_id == 1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
+    public static function isEditor ()
+    {
+        if (Auth::check()){
+            if (Auth::user()->role_id == 2){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
+    public static function isUser ()
+    {
+        if (Auth::check()){
+            if (Auth::user()->role_id == 3){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
+    public static function isGuest ()
+    {
+        if (Auth::check()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

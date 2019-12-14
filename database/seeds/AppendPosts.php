@@ -17,8 +17,8 @@ class AppendPosts extends Seeder
         $posts = [
             [
                 "user_id" => $lastEditor,
-                "headline" => "Заголовок",
-                "subheadline" => "Подзаголовок",
+                "headline" => "Заголовок (Политика)",
+                "subheadline" => "Подзаголовок (Политика)",
                 "post" => "Some text",
                 "image" => "/source/img/img.jpg",
                 "headings_id" => 1,
@@ -27,8 +27,8 @@ class AppendPosts extends Seeder
             ],
             [
                 "user_id" => $lastEditor,
-                "headline" => "Заголовок2",
-                "subheadline" => "Подзаголовок2",
+                "headline" => "Заголовок2 (Политика)",
+                "subheadline" => "Подзаголовок2 (Политика)",
                 "post" => "Some text2",
                 "image" => "/source/img/img.jpg",
                 "headings_id" => 1,
@@ -37,11 +37,41 @@ class AppendPosts extends Seeder
             ],
             [
                 "user_id" => $lastEditor,
-                "headline" => "Заголовок3",
-                "subheadline" => "Подзаголовок3",
+                "headline" => "Заголовок3 (Политика)",
+                "subheadline" => "Подзаголовок3 (Политика)",
                 "post" => "Some text3",
                 "image" => "/source/img/img.jpg",
                 "headings_id" => 1,
+                "import_id" => 1,
+                "approved" => "yes",
+            ],
+            [
+                "user_id" => $lastEditor,
+                "headline" => "Заголовок (Юмор)",
+                "subheadline" => "Подзаголовок (Юмор)",
+                "post" => "Some text3",
+                "image" => "/source/img/img.jpg",
+                "headings_id" => 2,
+                "import_id" => 1,
+                "approved" => "yes",
+            ],
+            [
+                "user_id" => $lastEditor,
+                "headline" => "Заголовок2 (Юмор)",
+                "subheadline" => "Подзаголовок2 (Юмор)",
+                "post" => "Some text3",
+                "image" => "/source/img/img.jpg",
+                "headings_id" => 2,
+                "import_id" => 1,
+                "approved" => "yes",
+            ],
+            [
+                "user_id" => $lastEditor,
+                "headline" => "Заголовок (Религия)",
+                "subheadline" => "Подзаголовок (Религия)",
+                "post" => "Some text3",
+                "image" => "/source/img/img.jpg",
+                "headings_id" => 3,
                 "import_id" => 1,
                 "approved" => "yes",
             ],
@@ -71,6 +101,30 @@ class AppendPosts extends Seeder
             [
                 "post_id"   => 3,
                 "tag_id"    => 2
+            ],
+            [
+                "post_id"   => 4,
+                "tag_id"    => 1
+            ],
+            [
+                "post_id"   => 5,
+                "tag_id"    => 4
+            ],
+            [
+                "post_id"   => 5,
+                "tag_id"    => 2
+            ],
+            [
+                "post_id"   => 6,
+                "tag_id"    => 1
+            ],
+            [
+                "post_id"   => 6,
+                "tag_id"    => 2
+            ],
+            [
+                "post_id"   => 6,
+                "tag_id"    => 3
             ],
         ];
 

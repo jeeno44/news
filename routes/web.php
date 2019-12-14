@@ -15,7 +15,50 @@ Route::group(['prefix' => '/'],function (){
 
     Route::get('', "IndexController@index")->name("index");
 
-    Route::get('news', "IndexController@news")->name("news");
+    Route::group(['prefix' => 'news'],function (){
+
+        Route::get('', "IndexController@news")->name("news");
+
+        Route::get('/{rub}', "IndexController@rubrics");
+
+    });
+
+    Route::group(['prefix' => 'profile',"middleware" => ["auth"]],function (){
+
+        Route::get('', "ProfileController@index")->name("profile");
+
+        Route::match(["get",'post'],'edit', "ProfileController@edit")->name("editprofile");
+
+        Route::get('invite/{resp}',"ProfileController@invite");
+
+    });
+
+    Route::group(['prefix' => 'admin','middleware' => ['web',"auth","admin"]],function (){
+
+        Route::get('', "AdminController@index")->name('adminIndex');
+
+        Route::get('/users', "AdminController@users")->name('users');
+
+        Route::get('/user/{id}', "AdminController@userEdit");
+        Route::post('/user/{id}', "AdminController@userEdit");
+
+    });
+
+    Route::resource('post', 'PostController');
+
+});
+
+Route::group(['prefix' => 'ajax'],function (){
+
+        Route::post('sendinvite',function (\Illuminate\Http\Request $request){
+
+            $user = \App\User::find($request->id);
+            $user->invite = "Хочешь в редакторы ?";
+            $user->save();
+
+            return "200";
+
+        });
 
 });
 

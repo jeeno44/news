@@ -29,12 +29,8 @@
 
     <style type="text/css">
 
-        th{
+        th,td{
             text-align: center;
-        }
-
-        .borderless td, .borderless th {
-            border: none;
         }
 
     </style>
@@ -48,32 +44,33 @@
             {{--<div class="site-logo"></div><span class="site-description">Just LOGO</span>--}}</span></div>
         <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                @section('menu')
-
-                    <a class="{{ \App\Helpers\Helper::ActiveMenu('/')  }}" href="{{ route('index') }}">     Главная</a>
-                    <a class="{{ \App\Helpers\Helper::ActiveMenu('news')  }}" href="{{ route('news') }}">   Новости</a>
-
-                    @auth()
-                        @if(\Illuminate\Support\Facades\Auth::user()->role_id ==1 )
-                            <a class="{{ \App\Helpers\Helper::ActiveMenu('users')  }}" href="{{ route('users') }}">Пользователи</a>
-                        @endif
-                    @endauth
-
-                    @auth() <a class="{{ \App\Helpers\Helper::ActiveMenu('profile') }}" href="{{ route('profile') }}"> Профиль</a>
-                    <a class="mdl-navigation__link" href="{{ route('logout') }}">                           Выйти</a>@endauth
-                    @guest()<a class="mdl-navigation__link" href="{{ route('login') }}">                            Войти</a>
-                    <a class="mdl-navigation__link" href="{{ route('register') }}">                         Регистрация</a>@endguest
-
-                @show
-
+                <a class="{{ \App\Helpers\Helper::ActiveMenu('/')  }}" href="{{ route('index') }}">Главная</a>
+                <a class="{{ \App\Helpers\Helper::ActiveMenu('news')  }}" href="{{ route('news') }}">Новости</a>
+                <a class="{{ \App\Helpers\Helper::ActiveMenu('users')  }}" href="{{ route('users') }}">Пользователи</a>
+        @auth() <a class="mdl-navigation__link" href="{{ route('logout') }}">Выйти</a> @endauth
+        @guest()<a class="mdl-navigation__link" href="{{ route('login') }}">Войти</a>
+                <a class="mdl-navigation__link" href="{{ route('register') }}">Регистрация</a>@endguest
 
             </nav>
         </div>
     </header>
 
+
+
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="{{ \App\Helpers\Helper::ActiveMenu('/')  }}" href="{{ route('index') }}">Главная</a>
+{{--            <a class="{{ \App\Helpers\Helper::ActiveMenu('servises')  }}" href="{{ route('servises') }}">Услуги</a>--}}
+{{--            <a class="{{ \App\Helpers\Helper::ActiveMenu('about') }}" href="{{ route('about') }}">О нас</a>--}}
+{{--            <a class="{{ \App\Helpers\Helper::ActiveMenu('reviews') }}" href="{{ route('reviews') }}">Отзывы</a>--}}
+{{--            <a class="{{ \App\Helpers\Helper::ActiveMenu('contacts') }}" href="{{ route('contacts') }}">Контакты</a>--}}
+{{--            <a class="{{ \App\Helpers\Helper::ActiveMenu('request')  }}" href="{{ route('request') }}">Заявка</a>--}}
+        </nav>
+    </div>
+
     <main class="mdl-layout__content">
         <div class="site-content">
-            <div class="container">
+            <div class="container" id="app">
 
                 @yield("container")
 
@@ -99,7 +96,6 @@
 </div>
 <script src="/source/scripts/material.min.js" defer></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-@yield("scv")
 
 </div>
 </body>
