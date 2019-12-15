@@ -16,21 +16,23 @@ use Kyslik\ColumnSortable\Sortable;
 
 class PostController extends Controller
 {
+
+//     Проверяем урвоень доступа к контроллеру и методам контроллера
     public function __construct()
     {
         $this->middleware("auth");
         $this->middleware(["auth","user"]);
     }
 
+//    Выводим список всех постов
+//    Если это админ то выводятся все посты всех редакторов (сортировка есть)
     public function index(Post $post)
     {
         if (Auth::user()->role_id == 1){
-//            $posts = Post::all();
             $posts = $post->sortable()->paginate(10);
         }
         else{
             $userId = Auth::user()->id;
-//            $posts = Post::where("user_id",$userId)->get();
             $posts = $post->where("user_id",$userId)->sortable()->paginate(10);
         }
 
@@ -201,7 +203,6 @@ class PostController extends Controller
             return redirect()->route("post.index");
         }
 
-        //return view("psevdoRemove");
     }
 
     public function updateApproved ($id,Request $request)
@@ -217,6 +218,5 @@ class PostController extends Controller
 
             return "OK";
         }
-        //return view("updateApproved");
     }
 }

@@ -6,8 +6,6 @@
 
     <h1>INDEX POST</h1>
 
-    <h1>@{{ param }}</h1>
-
     @if(\App\Helpers\Helper::isEditor()) <button class="btn btn-info" onclick="javascript:window.location.href='/post/create';"> Create </button>  @endif
 
     <hr>
@@ -51,14 +49,15 @@
                         @endforeach
                     </td>
                     <td>
-                        {{--                        {{ ($post->approved == "yes") ? "Да" : "Нет" }} / <img src="/source/images" alt="">--}}
-
                         @if($post->approved == "yes")
-                            <label class="toggle round"><input type="checkbox" @click="changeApproved('{{ $post->id }}','no')" checked><i class="slider"></i></label>
+                            <label class="toggle round">
+                                <input type="checkbox" @click="changeApproved('{{ $post->id }}','no')" checked><i class="slider"></i>
+                            </label>
                         @else
-                            <label class="toggle round"><input type="checkbox" @click="changeApproved('{{ $post->id }}',yes)"><i class="slider"></i></label>
+                            <label class="toggle round">
+                                <input type="checkbox" @click="changeApproved('{{ $post->id }}','yes')"><i class="slider"></i>
+                            </label>
                         @endif
-
                     </td>
                     <td><a href="/post/{{ $post->id }}/edit"><img src="/source/images/edit2.ico" width="16" height="16"></a></td>
                     <td><a href="/post/{{ $post->id }}/psevdoremove"><img src="/source/images/remove.png" width="16" height="16"></a></td>
@@ -68,8 +67,8 @@
 
             </tbody>
 
-
         </table>
+        {!! $posts->appends(\Request::except('page'))->render() !!}
     @else
         <h1>Нет записей</h1>
     @endif
@@ -90,15 +89,11 @@
             methods:{
                 changeApproved(val,status){
                     axios.post('/post/updateApproved/' + val,{status:status}).then(response => {
-                       // console.log(response.data);
                         if(response.data == "OK"){
                             window.location.reload();
                         }
                     });
                 }
-            },
-            components:{
-
             }
         });
 

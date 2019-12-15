@@ -71,12 +71,9 @@
             </div>
         </div>
 
-
-
         <br>
         <hr>
         <br>
-
 
         <div class="row">
             <div class="col-6 offset-2">

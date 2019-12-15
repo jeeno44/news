@@ -64,7 +64,7 @@
             methods:{
                 sendInvite(val){
                     if(this.invite == 0){
-                        axios.post('/ajax/sendinvite',{id:val}).then(response => {
+                        axios.post('/profile/sendinvite',{id:val}).then(response => {
                             console.log(response.data);
                             if(response.data == "200"){
                                 console.log("ВСЁ ОК");

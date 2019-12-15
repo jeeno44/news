@@ -14,7 +14,6 @@ class AdminController extends Controller
 
     public function users (User $user)
     {
-//        $users = User::all();
         $users = $user->sortable()->paginate(10);
 
         return view("admin.users",compact("users"));
@@ -39,5 +38,35 @@ class AdminController extends Controller
         $user = User::find($id);
 
         return view("admin.userEdit",compact("user"));
+    }
+
+    public function rubrics (Request $request)
+    {
+        if ($request->isMethod("post")){
+
+            $this->validate($request,[
+                "heading"       => "",
+                "heading_name"  => "",
+            ]);
+
+            dd($request);
+        }
+
+        return view("rubrics");
+    }
+
+    public function tags (Request $request)
+    {
+        if ($request->isMethod("post")){
+
+            $this->validate($request,[
+                "tag"       => "",
+                "tag_name"  => "",
+            ]);
+
+            dd($request);
+        }
+
+        return view("admin.tags");
     }
 }

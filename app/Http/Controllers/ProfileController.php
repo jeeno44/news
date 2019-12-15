@@ -43,7 +43,7 @@ class ProfileController extends Controller
         return view("profile.edit",compact("user"));
     }
 
-    public function invite ($resp)
+    public function inviteConfirm ($resp)
     {
         $me = Auth::user();
 

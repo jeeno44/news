@@ -40,8 +40,8 @@
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
                 @section('menu')
 
-                    <a class="{{ \App\Helpers\Helper::ActiveMenu('/')  }}" href="{{ route('index') }}">     Главная</a>
-                    <a class="{{ \App\Helpers\Helper::ActiveMenu('news')  }}" href="{{ route('news') }}">   Новости</a>
+                    <a class="{{ \App\Helpers\Helper::ActiveMenu('/')  }}" href="{{ route('index') }}">Главная</a>
+                    <a class="{{ \App\Helpers\Helper::ActiveMenu('news')  }}" href="{{ route('news') }}">Новости</a>
 
                     @auth()
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id ==1 )
@@ -50,9 +50,9 @@
                     @endauth
 
                     @auth() <a class="{{ \App\Helpers\Helper::ActiveMenu('profile') }}" href="{{ route('profile') }}"> Профиль</a>
-                    <a class="mdl-navigation__link" href="{{ route('logout') }}">                           Выйти</a>@endauth
-                    @guest()<a class="mdl-navigation__link" href="{{ route('login') }}">                            Войти</a>
-                    <a class="mdl-navigation__link" href="{{ route('register') }}">                         Регистрация</a>@endguest
+                    <a class="mdl-navigation__link" href="{{ route('logout') }}">Выйти</a>@endauth
+                    @guest()<a class="mdl-navigation__link" href="{{ route('login') }}">Войти</a>
+                    <a class="mdl-navigation__link" href="{{ route('register') }}">Регистрация</a>@endguest
 
                 @show
 
@@ -69,14 +69,6 @@
 
             </div>
         </div>
-        {{--<footer class="mdl-mini-footer">
-            <div class="footer-container">
-            </div>
-            <ul class="mdl-mini-footer__link-list">
-                <li><a href="#">Jeep Incorporations</a></li>
-            </ul>
-
-        </footer>--}}
     </main>
 
     <div class="row">

@@ -29,7 +29,17 @@ Route::group(['prefix' => '/'],function (){
 
         Route::match(["get",'post'],'edit', "ProfileController@edit")->name("editprofile");
 
-        Route::get('invite/{resp}',"ProfileController@invite");
+        Route::get('inviteconfirm/{resp}',"ProfileController@inviteConfirm");
+
+        Route::post('sendinvite',function (\Illuminate\Http\Request $request){
+
+            $user = \App\User::find($request->id);
+            $user->invite = "Хочешь в редакторы ?";
+            $user->save();
+
+            return "200";
+
+        });
 
     });
 
@@ -42,6 +52,11 @@ Route::group(['prefix' => '/'],function (){
         Route::get('/user/{id}', "AdminController@userEdit");
         Route::post('/user/{id}', "AdminController@userEdit");
 
+        Route::match(['get','post'],'rubrics',"AdminController@rubrics");
+
+        Route::match(['get','post'],'tags',"AdminController@tags");
+
+
     });
 
     Route::resource('post', 'PostController');
@@ -49,20 +64,6 @@ Route::group(['prefix' => '/'],function (){
     Route::get('post/{id}/psevdoremove', 'PostController@psevdoremove');
 
     Route::post('post/updateApproved/{id}', 'PostController@updateApproved');
-
-});
-
-Route::group(['prefix' => 'ajax'],function (){
-
-        Route::post('sendinvite',function (\Illuminate\Http\Request $request){
-
-            $user = \App\User::find($request->id);
-            $user->invite = "Хочешь в редакторы ?";
-            $user->save();
-
-            return "200";
-
-        });
 
 });
 

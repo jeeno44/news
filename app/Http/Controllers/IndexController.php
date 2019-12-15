@@ -12,10 +12,6 @@ use App\Models\Tidings;
 
 class IndexController extends Controller
 {
-    public function __construct()
-    {
-
-    }
 
     public function index()
     {
@@ -31,7 +27,6 @@ class IndexController extends Controller
 
     public function rubrics (Post $post,$rub = null)
     {
-//        $posts = Post::where("headings_id",Heading::where("heading",$rub)->first()->id)->where("approved","yes")->get();
         $posts = $post->where("headings_id",Heading::where("heading",$rub)->first()->id)->where("approved","yes")->sortable()->paginate(10);
 
         return view("pages.rubrics",compact("posts"));

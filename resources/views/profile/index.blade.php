@@ -7,6 +7,10 @@
         @if(\App\Helpers\Helper::isEditor() or \App\Helpers\Helper::isAdmin())
             <li><a href="/post">Posts</a></li>
         @endif
+        @if(\App\Helpers\Helper::isAdmin())
+            <li><a href="/admin/rubrics">Добавить рубрику</a></li>
+            <li><a href="/admin/tags">Добавить теги</a></li>
+        @endif
     </ul>
 
     <h1>VIEW PROFILE</h1>
@@ -25,8 +29,8 @@
 
         <h1>Вас приглашают в редакторы</h1>
         <hr>
-        <button class="btn btn-success" onclick="javascript:window.location.href='/profile/invite/yes';"> Принять  </button>
-        <button class="btn btn-danger" onclick="javascript:window.location.href='/profile/invite/no';"> Отклонить  </button>
+        <button class="btn btn-success" onclick="javascript:window.location.href='/profile/inviteconfirm/yes';"> Принять  </button>
+        <button class="btn btn-danger" onclick="javascript:window.location.href='/profile/inviteconfirm/no';"> Отклонить  </button>
 
     @endif
 
