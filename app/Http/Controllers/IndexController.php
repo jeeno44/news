@@ -29,9 +29,10 @@ class IndexController extends Controller
         return view("pages.news",compact("rubrics"));
     }
 
-    public function rubrics ($rub = null)
+    public function rubrics (Post $post,$rub = null)
     {
-        $posts = Post::where("headings_id",Heading::where("heading",$rub)->first()->id)->get();
+//        $posts = Post::where("headings_id",Heading::where("heading",$rub)->first()->id)->where("approved","yes")->get();
+        $posts = $post->where("headings_id",Heading::where("heading",$rub)->first()->id)->where("approved","yes")->sortable()->paginate(10);
 
         return view("pages.rubrics",compact("posts"));
     }

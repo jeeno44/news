@@ -12,45 +12,54 @@ class AppendPosts extends Seeder
      */
     public function run()
     {
-        $lastEditor = DB::table("users")->where("role_id",2)->first()->id;
+        $firstEditor = DB::table("users")->where("role_id",2)->first()->id;
+        $lastEditor = DB::table("users")->where("role_id",2)->orderBy("id","desc")->first()->id;
 
         $posts = [
             [
-                "user_id" => $lastEditor,
+                "user_id" => $firstEditor,
                 "headline" => "Заголовок (Политика)",
                 "subheadline" => "Подзаголовок (Политика)",
-                "post" => "Some text",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/1.jpg",
                 "headings_id" => 1,
                 "import_id" => 1,
                 "approved" => "yes",
             ],
             [
-                "user_id" => $lastEditor,
+                "user_id" => $firstEditor,
                 "headline" => "Заголовок2 (Политика)",
                 "subheadline" => "Подзаголовок2 (Политика)",
-                "post" => "Some text2",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/2.jpg",
                 "headings_id" => 1,
                 "import_id" => 1,
                 "approved" => "yes",
             ],
             [
-                "user_id" => $lastEditor,
+                "user_id" => $firstEditor,
                 "headline" => "Заголовок3 (Политика)",
                 "subheadline" => "Подзаголовок3 (Политика)",
-                "post" => "Some text3",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/3.jpg",
                 "headings_id" => 1,
                 "import_id" => 1,
                 "approved" => "yes",
             ],
             [
-                "user_id" => $lastEditor,
+                "user_id" => $firstEditor,
                 "headline" => "Заголовок (Юмор)",
                 "subheadline" => "Подзаголовок (Юмор)",
-                "post" => "Some text3",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/4.jpg",
                 "headings_id" => 2,
                 "import_id" => 1,
                 "approved" => "yes",
@@ -59,8 +68,10 @@ class AppendPosts extends Seeder
                 "user_id" => $lastEditor,
                 "headline" => "Заголовок2 (Юмор)",
                 "subheadline" => "Подзаголовок2 (Юмор)",
-                "post" => "Some text3",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/5.jpg",
                 "headings_id" => 2,
                 "import_id" => 1,
                 "approved" => "yes",
@@ -69,8 +80,10 @@ class AppendPosts extends Seeder
                 "user_id" => $lastEditor,
                 "headline" => "Заголовок (Религия)",
                 "subheadline" => "Подзаголовок (Религия)",
-                "post" => "Some text3",
-                "image" => "/source/img/img.jpg",
+                "post" => "Страница похожа на единую ленту гастролей, событий и новостей «ДДТ». 
+                Раньше это был черный фон и белые буквы – с главной я всегда уходил в легендарный «ЧаДДТ». 
+                Новый дизайн на порядок современнее и уж точно лучше, чем у большинства коллег по цеху.",
+                "image" => "/source/uploadImg/posts/6.jpg",
                 "headings_id" => 3,
                 "import_id" => 1,
                 "approved" => "yes",

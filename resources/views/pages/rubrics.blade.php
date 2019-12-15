@@ -7,14 +7,14 @@
 
             <thead>
 
-            <th>ID</th>
-            <th>Author</th>
-            <th>Headline</th>
-            <th>Subheadline</th>
-            <th>Post</th>
+            <th>@sortablelink('id', 'ID')</th>
+            <th>@sortablelink('user_id', 'Author')</th>
+            <th>@sortablelink('headline', 'Headline')</th>
+            <th>@sortablelink('subheadline', 'Subheadline')</th>
+            <th>@sortablelink('post', 'Post')</th>
             <th>Img</th>
-            <th>Date</th>
-            <th>Approved</th>
+            <th>@sortablelink('created_at', 'Date')</th>
+            <th>@sortablelink('approved', 'Approved')</th>
             <th>Tags</th>
 
 

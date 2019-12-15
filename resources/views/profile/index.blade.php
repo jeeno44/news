@@ -4,7 +4,9 @@
 
     <ul>
         <li><a href="/profile/edit">Edit Profile</a></li>
-        <li><a href="/post">Posts</a></li>
+        @if(\App\Helpers\Helper::isEditor() or \App\Helpers\Helper::isAdmin())
+            <li><a href="/post">Posts</a></li>
+        @endif
     </ul>
 
     <h1>VIEW PROFILE</h1>

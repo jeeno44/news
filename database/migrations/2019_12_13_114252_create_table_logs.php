@@ -15,12 +15,12 @@ class CreateTableLogs extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp("datetime")->nullable(false);
-            $table->integer('author_id')->nullable(false);
-            $table->integer('post_create_id')->nullable(false);
-            $table->integer('post_edit_id')->nullable(false);
-            $table->integer('post_deleted_id')->nullable(false);
-            $table->integer('post_moderated_id')->nullable(false);
+            $table->timestamp("datetime")->nullable();
+            $table->integer('author_id')->nullable();
+            $table->integer('post_create_id')->nullable();
+            $table->integer('post_edit_id')->nullable();
+            $table->integer('post_deleted_id')->nullable();
+            $table->integer('post_moderated_id')->nullable();
             $table->timestamp("created_at")->nullable(false)->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp("updated_at")->nullable(false)->default(DB::raw('CURRENT_TIMESTAMP'));
         });

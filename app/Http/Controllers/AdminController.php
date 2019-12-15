@@ -23,7 +23,6 @@ class AdminController extends Controller
     public function userEdit ($id,Request $request)
     {
         if ($request->isMethod("post")){
-//            dump(User::find($id));
             $userEdit = User::find($id);
 
             if ($userEdit->role_id == 1 && $request->status > 1){
@@ -39,7 +38,6 @@ class AdminController extends Controller
 
         $user = User::find($id);
 
-//        dd($user);
         return view("admin.userEdit",compact("user"));
     }
 }

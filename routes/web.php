@@ -46,6 +46,10 @@ Route::group(['prefix' => '/'],function (){
 
     Route::resource('post', 'PostController');
 
+    Route::get('post/{id}/psevdoremove', 'PostController@psevdoremove');
+
+    Route::post('post/updateApproved/{id}', 'PostController@updateApproved');
+
 });
 
 Route::group(['prefix' => 'ajax'],function (){

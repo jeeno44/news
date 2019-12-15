@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\Helper as Hp;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role_id == 3){
+        if (!Hp::isEditor() && !Hp::isAdmin()){
             return redirect()->route("index");
         }
         else{

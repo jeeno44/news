@@ -1,28 +1,11 @@
-<script src="https://cdn.jsdelivr.net/npm/vue" type="text/javascript"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
-<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-
 @extends('admin.adminLayout')
 
 @section("container")
-
-
-
 
     <h1>USERS</h1>
 
     <table class="table table-bordered" id="app">
 
-          {{--<thead>
-
-             <th>ID</th>
-             <th>Name</th>
-             <th>Email</th>
-             <th>Status</th>
-             <th width="20px" title="Редактировать">Edit</th>
-             <th width="20px" title="Приглашение в редакторы">Inv</th>
-
-          </thead>--}}
           <thead>
 
              <th>@sortablelink('id', 'ID')</th>

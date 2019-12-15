@@ -61,4 +61,10 @@ class ProfileController extends Controller
         }
         return redirect()->route("profile");
     }
+
+    public function delete ()
+    {
+
+        //return view("delete");
+    }
 }

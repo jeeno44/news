@@ -3,6 +3,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Post;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +56,20 @@ class Helper
         }
     }
 
+    public static function isAuthor ($post)
+    {
+        if (Auth::check()){
+
+                if (Auth::user()->id == Post::find($post)->user_id){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+
+        }
+    }
+
     public static function isUser ()
     {
         if (Auth::check()){
@@ -76,5 +91,12 @@ class Helper
             return false;
         }
     }
+
+    public static function getLastIdPost ()
+    {
+        return (Post::orderBy("id","desc")->first()->id)+1;
+    }
+
+
 
 }

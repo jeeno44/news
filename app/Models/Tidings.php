@@ -8,6 +8,11 @@ use App\Models\Tag;
 
 class Tidings extends Model
 {
+    protected $fillable = [
+        "post_id",
+        "tag_id"
+    ];
+
     public function Posts()
     {
         return $this->belongsTo(Post::class,"post_id","id");

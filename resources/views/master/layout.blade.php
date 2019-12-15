@@ -14,6 +14,8 @@
     <link href="/source/styles/main.css" rel="stylesheet">
     <link href="/source/styles/nomain.css" rel="stylesheet">
     <link href="/source/styles/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/other.css">
+    <link rel="stylesheet" href="/css/toggle.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
@@ -26,18 +28,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue" type="text/javascript"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-
-    <style type="text/css">
-
-        th{
-            text-align: center;
-        }
-
-        .borderless td, .borderless th {
-            border: none;
-        }
-
-    </style>
 
 </head>
 <div id="top">

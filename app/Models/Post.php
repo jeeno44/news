@@ -4,9 +4,36 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class Post extends Model
 {
+    use Notifiable,Sortable;
+
+    protected $fillable = [
+        "user_id",
+        "headline",
+        "subheadline",
+        "post",
+        "image",
+        "headings_id",
+        "import_id",
+        "approved"
+    ];
+
+    public $sortable = [
+        "id",
+        "user_id",
+        "headline",
+        "subheadline",
+        "post",
+        "headings_id",
+        "import_id",
+        "approved",
+    ];
+
     public function User ()
     {
         return $this->belongsTo(User::class,'user_id',"id");
@@ -26,4 +53,6 @@ class Post extends Model
     {
         return $this->hasMany(Tidings::class,"post_id","id");
     }
+
+
 }

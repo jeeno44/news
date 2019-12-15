@@ -57,6 +57,15 @@ class AppendAdminAndEditors extends Seeder
                 "invite"            => null,
                 "remember_token"    => null
             ],
+            [
+                "role_id"           => 3,
+                "name"              => "mona",
+                "email"             => "mona@mail.ru",
+                "email_verified_at" => null,
+                "password"          => Hash::make("123456"),
+                "invite"            => null,
+                "remember_token"    => null
+            ],
         ];
 
         if (DB::table("roles")->count() < 1 && DB::table("users")->count() < 1){
