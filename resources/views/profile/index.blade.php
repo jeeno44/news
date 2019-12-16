@@ -10,6 +10,7 @@
         @if(\App\Helpers\Helper::isAdmin())
             <li><a href="/admin/rubrics">Добавить рубрику</a></li>
             <li><a href="/admin/tags">Добавить теги</a></li>
+            <li><a href="/admin/logs">Журнал логов</a></li>
         @endif
     </ul>
 

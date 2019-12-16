@@ -47,6 +47,8 @@
 
     </table>
 
+    {!! $users->appends(\Request::except('page'))->render() !!}
+
     <hr>
 
 @endsection

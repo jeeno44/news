@@ -7,7 +7,7 @@
     <nav>
 
         @foreach($rubrics as $rubric)
-            <a href="/news/{{ $rubric->heading }}">{{ $rubric->heading_name }}</a>
+            <a href="/news/rubrics/{{ $rubric->heading }}">{{ $rubric->heading_name }}</a>
         @endforeach
 
         <div class="animation start-home"></div>

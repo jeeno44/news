@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Heading;
+use App\Models\Log;
+use App\Models\Tag;
 use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // Главная старница админа (пустая)
     public function index()
     {
         return view("admin.adminLayout");
     }
 
+    // Вывод всех пользователей с сортировкой и пагинацией (постраничный вывод по 10 записей)
     public function users (User $user)
     {
         $users = $user->sortable()->paginate(10);
@@ -19,6 +24,7 @@ class AdminController extends Controller
         return view("admin.users",compact("users"));
     }
 
+    // Страница редактирования статуса пользователя (админ, редактор, пользователь)
     public function userEdit ($id,Request $request)
     {
         if ($request->isMethod("post")){
@@ -40,33 +46,46 @@ class AdminController extends Controller
         return view("admin.userEdit",compact("user"));
     }
 
+    // Добавляем рубрики для статей
     public function rubrics (Request $request)
     {
         if ($request->isMethod("post")){
-
+            // Валидация
             $this->validate($request,[
-                "heading"       => "",
-                "heading_name"  => "",
+                "heading"       => "required|min:3",
+                "heading_name"  => "required|min:3",
             ]);
 
-            dd($request);
+            Heading::create($request->all());
+            return redirect()->route("profile");
         }
 
-        return view("rubrics");
+        return view("admin.rubrics");
     }
 
+    // Добавляем теги для статей
     public function tags (Request $request)
     {
         if ($request->isMethod("post")){
 
+            // Валидация
             $this->validate($request,[
-                "tag"       => "",
-                "tag_name"  => "",
+                "tag"       => "required|min:3",
+                "tag_name"  => "required|min:3",
             ]);
 
-            dd($request);
+            Tag::create($request->all());
+            return redirect()->route("profile");
         }
 
         return view("admin.tags");
+    }
+
+    // Просмотр об активности статей (Добавление, редактирование, удаление и модерация)
+    public function logs (Log $log)
+    {
+        $logs = $log->sortable()->paginate(10);
+
+        return view("admin.logs",compact("logs"));
     }
 }

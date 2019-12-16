@@ -8,19 +8,24 @@
 
     @if(isset($post))
 
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary"
-                    onclick="javascript:window.location.href='/post/create';">Create New
-            </button>
-            <button type="button" class="btn btn-secondary"
-                    onclick="javascript:window.location.href='/post/{{ $post->id }}/edit';">Edit Post
-            </button>
-            <form action="/post/{{ $post->id }}" method="post">
-                <input type="submit" value="Remove Post" class="btn btn-secondary">
-                <input type="hidden" name="_method" value="delete" />
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            </form>
-        </div>
+        @if(\App\Helpers\Helper::isAuthor($post->id) || \App\Helpers\Helper::isAdmin())
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary"
+                        onclick="javascript:window.location.href='/post';">All Posts
+                </button>
+                <button type="button" class="btn btn-secondary"
+                        onclick="javascript:window.location.href='/post/create';">Create New
+                </button>
+                <button type="button" class="btn btn-secondary"
+                        onclick="javascript:window.location.href='/post/{{ $post->id }}/edit';">Edit Post
+                </button>
+                <form action="/post/{{ $post->id }}" method="post">
+                    <input type="submit" value="Remove Post" class="btn btn-secondary">
+                    <input type="hidden" name="_method" value="delete" />
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
+            </div>
+        @endif
 
         <div class="row">
             <div class="col-12">&nbsp;</div>
@@ -66,7 +71,7 @@
             <div class="col-6 offset-2">
                 Теги :<br>
                 @foreach($post->Tids as $tags)
-                   <b> {{ $tags->Tags->tag }}</b><br>
+                   <b> {{ $tags->Tags->tag_name }}</b><br>
                 @endforeach
             </div>
         </div>

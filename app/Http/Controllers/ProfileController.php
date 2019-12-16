@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    // Страница для просмотра профиля пользователя
     public function index()
     {
         $user = Auth::user();
@@ -15,8 +16,10 @@ class ProfileController extends Controller
         return view("profile.index",compact("user"));
     }
 
+    // Страница с формой для редактирования пользователя
     public function edit (Request $request)
     {
+        // Метод сохранения изменений в базу данных
         if ($request->isMethod("post")){
 
             $this->validate($request,[
@@ -43,6 +46,7 @@ class ProfileController extends Controller
         return view("profile.edit",compact("user"));
     }
 
+    // Метод подтвердения приглашения в редакторы
     public function inviteConfirm ($resp)
     {
         $me = Auth::user();
@@ -62,6 +66,26 @@ class ProfileController extends Controller
         return redirect()->route("profile");
     }
 
+    //  Метод приглашения в редакторы
+    public function sendinvite (Request $request)
+    {
+        $user = \App\User::find($request->id);
+        $user->invite = "Хочешь в редакторы ?";
+        $user->save();
+
+        return "200";
+    }
+
+    // Метод выхода из профиля
+    public function logout ()
+    {
+        if (Auth::check()){
+            Auth::logout();
+            return redirect()->route("index");
+        }
+    }
+
+    // Метод удаления пользователя. (под вопросом)
     public function delete ()
     {
 

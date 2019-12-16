@@ -12,12 +12,13 @@ use App\Models\Tidings;
 
 class IndexController extends Controller
 {
-
+    // Главная страница сайта (пустая)
     public function index()
     {
         return view("pages.index");
     }
 
+    // Страница новостей сайта с меню рубриками
     public function news ()
     {
         $rubrics = Heading::all();
@@ -25,10 +26,19 @@ class IndexController extends Controller
         return view("pages.news",compact("rubrics"));
     }
 
+    // Вывод новостей для каждой рубрики
     public function rubrics (Post $post,$rub = null)
     {
         $posts = $post->where("headings_id",Heading::where("heading",$rub)->first()->id)->where("approved","yes")->sortable()->paginate(10);
 
         return view("pages.rubrics",compact("posts"));
+    }
+
+    // Вывод конкретной статьи из рубрики
+    public function show ($id)
+    {
+        $post = Post::find($id);
+
+        return view("pages.show",compact("post"));
     }
 }

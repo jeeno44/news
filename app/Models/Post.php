@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Kyslik\ColumnSortable\Sortable;
-
+use App\Models\Log;
 
 class Post extends Model
 {
@@ -54,5 +54,9 @@ class Post extends Model
         return $this->hasMany(Tidings::class,"post_id","id");
     }
 
+    public function Log()
+    {
+        return $this->hasMany(Log::class,'post_id','id');
+    }
 
 }

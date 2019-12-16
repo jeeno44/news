@@ -16,23 +16,22 @@
             <th>@sortablelink('created_at', 'Date')</th>
             <th>Tags</th>
 
-
             </thead>
 
             <tbody>
             @foreach($posts as $post)
 
                 <tr>
-                    <td>{{ $post->id }}</td>
+                    <td><a href="/news/show/{{ $post->id }}" title="Подробнее">{{ $post->id }}</a></td>
                     <td>{{ $post->User->name }}</td>
                     <td>{{ $post->headline }}</td>
                     <td>{{ $post->subheadline }}</td>
                     <td>{{ $post->post }}</td>
-                    <td><img src="{{ $post->image }}" width="150" height="70"></td>
+                    <td><a href="/news/show/{{ $post->id }}" title="Подробнее"><img src="{{ $post->image }}" width="150" height="70"></a></td>
                     <td>{{ \App\Helpers\Helper::getDate($post->created_at) }}</td>
                     <td>
                         @foreach($post->Tids as $tags)
-                            {{ $tags->Tags->tag }}<br>
+                            {{ $tags->Tags->tag_name }}<br>
                         @endforeach
                     </td>
                 </tr>

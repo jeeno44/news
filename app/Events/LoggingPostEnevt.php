@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use Carbon\Carbon;
+use App\Models\Post;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class LoggingEvent
+class LoggingPostEnevt
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,27 +20,16 @@ class LoggingEvent
      *
      * @return void
      */
-    public $dateTime;
-    public $author_id;
-    public $post_created_id;
-    public $post_edit_id;
-//    public $author_id;
-//    public $author_id;
 
-/*    id
-datetime
-author_id
-post_create_id
-post_edit_id
-post_deleted_id
-post_moderated_id
-created_at
-updated_at*/
+    public $user;
+    public $postId;
+    public $sob;
 
-
-    public function __construct(Post $post)
+    public function __construct(Post $post,$user,$sob)
     {
-        $this->dateTime = Carbon::now()->toDateTimeString();
+        $this->user     = $user;
+        $this->postId   = $post->id;
+        $this->sob      = $sob;
     }
 
     /**

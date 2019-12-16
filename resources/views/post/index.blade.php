@@ -39,13 +39,13 @@
                     <td>{{ $post->User->name }}</td>
                     <td>{{ $post->headline }}</td>
                     <td>{{ $post->subheadline }}</td>
-                    <td><img src="{{ $post->image }}" width="150" height="70"></td>
+                    <td><a href="/post/{{ $post->id }}" title="Подробнее"><img src="{{ $post->image }}" width="150" height="70"></a></td>
                     <td>{{ $post->post }}</td>
                     <td>{{ $post->Higs->heading_name }}</td>
                     <td>{{ $post->Imps->import_name }}</td>
                     <td>
                         @foreach($post->Tids as $tags)
-                            {{ $tags->Tags->tag }}<br>
+                            {{ $tags->Tags->tag_name }}<br>
                         @endforeach
                     </td>
                     <td>

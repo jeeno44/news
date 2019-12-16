@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Log;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,6 +50,11 @@ class User extends Authenticatable
     {
        return $this->hasMany(Post::class,'user_id','id');
 
+    }
+
+    public function Log()
+    {
+       return $this->hasMany(Log::class,'author_id','id');
     }
 
     public $sortable = [

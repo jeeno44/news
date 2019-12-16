@@ -32,6 +32,11 @@ class Helper
         return substr($datetime,0,10);
     }
 
+    public static function getTime($datetime)
+    {
+        return substr($datetime,-8);
+    }
+
     public static function isAdmin ()
     {
         if (Auth::check()){
@@ -95,6 +100,16 @@ class Helper
     public static function getLastIdPost ()
     {
         return (Post::orderBy("id","desc")->first()->id)+1;
+    }
+
+    public static function rusEvent ($event)
+    {
+        switch ($event){
+            case "created":     return "Запись создана"; break;
+            case "moderated":   return "Модерация"; break;
+            case "updated":     return "Запись отредактирована"; break;
+            case "deleted":     return "Запись удалена"; break;
+        }
     }
 
 

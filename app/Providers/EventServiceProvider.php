@@ -2,9 +2,16 @@
 
 namespace App\Providers;
 
-use App\Events\LoggingEvent;
-use App\Listeners\LoggingEventListenerDB;
-use App\Listeners\LoggingEventListenerLog;
+use App\Events\CreatedPostEvent;
+use App\Events\DeletedPostEvent;
+use App\Events\LoggingPostEnevt;
+use App\Events\ModeratedPostEvent;
+use App\Events\UpdatedPostEvent;
+use App\Listeners\CreatedPostEventListener;
+use App\Listeners\DeletedPostEventListener;
+use App\Listeners\LoggingPostEnevtListener;
+use App\Listeners\ModerateredPostEventListener;
+use App\Listeners\UpdatedPostEventListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,9 +28,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        LoggingEvent::class => [
-            LoggingEventListenerDB::class,
-            LoggingEventListenerLog::class,
+        LoggingPostEnevt::class => [
+            LoggingPostEnevtListener::class,
         ],
     ];
 
